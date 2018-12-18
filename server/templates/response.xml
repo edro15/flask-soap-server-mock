@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap-env:Envelope xmlns:soap-env="http://www.w3.org/2003/05/soap-envelope">
+    <soap-env:Body>
+        <ns0:{{ name }}Response xmlns:ns0="{{ namespace }}">
+            <ns0:returnCode>{{ code }}</ns0:returnCode>
+            <ns0:message>{{ msg }}</ns0:message>
+        </ns0:{{ name }}Response>
+    </soap-env:Body>
+</soap-env:Envelope>

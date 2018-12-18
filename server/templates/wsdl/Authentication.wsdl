@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:ns1="http://org.apache.axis2/xsd" xmlns:tns="http://service.auth.example.com" xmlns:ns="http://schema.auth.example.com"
+	xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://service.auth.example.com">
+	<wsdl:types>
+		<xs:schema attributeFormDefault="qualified" elementFormDefault="qualified"
+			targetNamespace="http://schema.auth.example.com" xmlns:ns="http://schema.auth.example.com">
+
+			<xs:element name="loginRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" name="username"
+							nillable="false" type="xs:string" />
+						<xs:element minOccurs="1" maxOccurs="1" name="password"
+							nillable="false" type="xs:string" />
+						</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="loginResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="returnCode" type="xs:int" />
+						<xs:element name="message" type="xs:string" nillable="true" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="editPasswordRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" name="username"
+							nillable="false" type="xs:string" />
+						<xs:element minOccurs="1" maxOccurs="1" name="password"
+							nillable="false" type="xs:string" />
+						<xs:element minOccurs="1" maxOccurs="1" name="newPassword"
+							nillable="false" type="xs:string" />
+						<xs:element minOccurs="1" maxOccurs="1" name="newPasswordConfirmation"
+							nillable="false" type="xs:string" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="editPasswordResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="returnCode" type="xs:int"  />
+						<xs:element name="message" type="xs:string" nillable="true" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+		</xs:schema>
+  </wsdl:types>
+
+
+	<wsdl:message name="loginRequest">
+		<wsdl:part name="parameters" element="ns:loginRequest" />
+	</wsdl:message>
+	<wsdl:message name="loginResponse">
+		<wsdl:part name="parameters" element="ns:loginResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="editPasswordRequest">
+		<wsdl:part name="parameters" element="ns:editPasswordRequest" />
+	</wsdl:message>
+	<wsdl:message name="editPasswordResponse">
+		<wsdl:part name="parameters" element="ns:editPasswordResponse" />
+	</wsdl:message>
+
+
+	<wsdl:portType name="AuthenticationPortType">
+		<wsdl:operation name="login">
+			<wsdl:input message="tns:loginRequest" wsaw:Action="urn:login" />
+			<wsdl:output message="tns:loginResponse" wsaw:Action="urn:loginResponse" />
+        </wsdl:operation>
+
+		<wsdl:operation name="editPassword">
+			<wsdl:input message="tns:editPasswordRequest" wsaw:Action="urn:editPassword" />
+			<wsdl:output message="tns:editPasswordResponse" wsaw:Action="urn:editPasswordResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="AuthenticationSoap12Binding" type="tns:AuthenticationPortType">
+		<soap12:binding transport="http://schemas.xmlsoap.org/soap/http"
+			style="document" />
+
+		<wsdl:operation name="editPassword">
+			<soap12:operation soapAction="urn:editPassword"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="login">
+			<soap12:operation soapAction="urn:login"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="Authentication">
+		<wsdl:port name="AuthenticationHttpSoap12Endpoint" binding="tns:AuthenticationSoap12Binding">
+			<soap12:address location="{{ binding }}" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

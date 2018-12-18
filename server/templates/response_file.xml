@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap-env:Envelope xmlns:soap-env="http://www.w3.org/2003/05/soap-envelope">
+    <soap-env:Body>
+        <ns0:{{ name }}Response xmlns:ns0="http://service.operations.example.com">
+            <ns0:returnCode>0</ns0:returnCode>
+            <ns0:message>Nothing to report</ns0:message>
+            <ns0:file Name="{{ filename }}" Data="{{ filecontent }}" Size="{{ filesize }}"></ns0:file>
+        </ns0:{{ name }}Response>
+    </soap-env:Body>
+</soap-env:Envelope>

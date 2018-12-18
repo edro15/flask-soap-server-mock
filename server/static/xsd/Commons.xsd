@@ -1,0 +1,148 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	attributeFormDefault="unqualified" elementFormDefault="qualified"
+	targetNamespace="http://example.com/mock/Common" version="2010-06-24"
+	xmlns="http://example.com/mock/Common">
+	<xs:complexType name="StringType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute fixed="String" name="type" type="xs:string"
+					use="required" />
+				<xs:attribute name="mandatory" type="xs:boolean" use="optional" />
+				<xs:attribute name="readonly" type="xs:boolean" use="optional" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="DecimalType">
+		<xs:simpleContent>
+			<xs:extension base="xs:decimal">
+				<xs:attribute fixed="Decimal" name="type" type="xs:string"
+					use="required" />
+				<xs:attribute name="mandatory" type="xs:boolean" use="optional" />
+				<xs:attribute name="readonly" type="xs:boolean" use="optional" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="BooleanType">
+		<xs:simpleContent>
+			<xs:extension base="xs:boolean">
+				<xs:attribute fixed="Boolean" name="type" type="xs:string"
+					use="required" />
+				<xs:attribute name="mandatory" type="xs:boolean" use="optional" />
+				<xs:attribute name="readonly" type="xs:boolean" use="optional" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="DateTimeType">
+		<xs:simpleContent>
+			<xs:extension base="xs:dateTime">
+				<xs:attribute fixed="DateTime" name="type" type="xs:string"
+					use="required" />
+				<xs:attribute name="mandatory" type="xs:boolean" use="optional" />
+				<xs:attribute name="readonly" type="xs:boolean" use="optional" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="IntType">
+		<xs:simpleContent>
+			<xs:extension base="xs:int">
+				<xs:attribute fixed="Int" name="type" type="xs:string"
+					use="required" />
+				<xs:attribute name="mandatory" type="xs:boolean" use="optional" />
+				<xs:attribute name="readonly" type="xs:boolean" use="optional" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="ShortType">
+		<xs:simpleContent>
+			<xs:extension base="xs:short">
+				<xs:attribute fixed="Short" name="type" type="xs:string"
+					use="required" />
+				<xs:attribute name="mandatory" type="xs:boolean" use="optional" />
+				<xs:attribute name="readonly" type="xs:boolean" use="optional" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="LongType">
+		<xs:simpleContent>
+			<xs:extension base="xs:long">
+				<xs:attribute fixed="Long" name="type" type="xs:string"
+					use="required" />
+				<xs:attribute name="mandatory" type="xs:boolean" use="optional" />
+				<xs:attribute name="readonly" type="xs:boolean" use="optional" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="ByteType">
+		<xs:simpleContent>
+			<xs:extension base="xs:byte">
+				<xs:attribute fixed="Byte" name="type" type="xs:string"
+					use="required" />
+				<xs:attribute name="mandatory" type="xs:boolean" use="optional" />
+				<xs:attribute name="readonly" type="xs:boolean" use="optional" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="FloatType">
+		<xs:simpleContent>
+			<xs:extension base="xs:float">
+				<xs:attribute fixed="Float" name="type" type="xs:string"
+					use="required" />
+				<xs:attribute name="mandatory" type="xs:boolean" use="optional" />
+				<xs:attribute name="readonly" type="xs:boolean" use="optional" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="DoubleType">
+		<xs:simpleContent>
+			<xs:extension base="xs:double">
+				<xs:attribute fixed="Double" name="type" type="xs:string"
+					use="required" />
+				<xs:attribute name="mandatory" type="xs:boolean" use="optional" />
+				<xs:attribute name="readonly" type="xs:boolean" use="optional" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="Base64Type">
+		<xs:simpleContent>
+			<xs:extension base="xs:base64Binary">
+				<xs:attribute fixed="Base64" name="type" type="xs:string"
+					use="required" />
+				<xs:attribute name="mandatory" type="xs:boolean" use="optional" />
+				<xs:attribute name="readonly" type="xs:boolean" use="optional" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="ArrayType">
+		<xs:attribute fixed="Array" name="type" type="xs:string"
+			use="required" />
+	</xs:complexType>
+	<xs:complexType name="Infofiletype">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="id" nillable="true"
+				type="xs:string" />
+			<xs:element minOccurs="0" name="length" nillable="true"
+				type="xs:decimal" />
+			<xs:element minOccurs="0" name="name" nillable="true"
+				type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Credentials">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="1" name="username"
+				nillable="true" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="password"
+				nillable="true" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="stringBoolean">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="true" />
+			<xs:enumeration value="false" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="FileType">
+		<xs:attribute name="Name" type="xs:string" />
+		<xs:attribute name="Data" type="xs:base64Binary" />
+		<xs:attribute name="Size" type="xs:int" />
+	</xs:complexType>
+</xs:schema>
