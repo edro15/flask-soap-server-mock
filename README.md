@@ -46,7 +46,6 @@ Commands:
 
 ### Example: Login
 ```bash
-# @ flask-soap-server-mock/client
 (client) ~$ ./cli.py login
 Response code '0' with message 'Welcome back'
 ```
@@ -73,8 +72,8 @@ Similarly to `response.xml`, create your own template in `server/templates` and 
 
 ## Contributions
 So, do you want to use this mock for your own testing? Great!
-* Want to contribute? Even better! Feel free to create a PR
-* Found a bug? Open an issue
+* Want to contribute? Even better! Feel free to create a [PR](https://github.com/edro15/flask-soap-server-mock/pulls)
+* Found a bug? Open an [issue](https://github.com/edro15/flask-soap-server-mock/issues)
 
 ## License
-MIT Licensed. See LICENSE for full details.
+MIT Licensed. See [LICENSE](https://github.com/edro15/flask-soap-server-mock/blob/master/LICENSE) for full details.
